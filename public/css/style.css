@@ -1,0 +1,164 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.container {
+  max-width: 730px;
+}
+
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+.header .account .avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.header .account, .header .repos-type {
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: block;
+}
+
+.header .account:hover, .header .account:focus, .header .repos-type:hover, .header .repos-type:focus {
+  text-decoration: none;
+  background-color: hsl(0, 0%, 93%);
+}
+
+.header li.active .repos-type, .header li.active .repos-type:hover, .header li.active .repos-type:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+#profile .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+}
+
+#profile label {
+  font-weight: normal;
+}
+
+#main {
+  margin: 20px 0;
+}
+
+.repo_list {
+  margin: 0;
+  padding: 0;
+}
+
+.repo_list li {
+  list-style: none;
+  padding: 15px 0 0 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.repo_list li p {
+  padding-left: 52px;
+}
+
+.repo_list li.focus {
+  background: hsl(60, 81%, 94%);
+}
+
+.watched_repo:first-child {
+  /*padding-top: 0;*/
+}
+
+.watched_repo:last-child {
+  border-bottom: 0;
+  overflow: hidden;
+}
+
+.watched_repo .btn {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.watched_repo .description {
+  margin-top: 0;
+  margin-bottom: 4px;
+  color: #666;
+  font-size: 13px;
+}
+
+.watched_repo .description a {
+  font-style: italic;
+}
+
+.watched_repo .description span.label {
+  font-size: 11px;
+  padding: 0 2px;
+}
+
+.watched_repo .meta {
+  font-size: 11px;
+  color: hsl(0, 0%, 60%);
+  font-style: italic;
+}
+
+.watched_repo .meta span.glyphicon {
+  margin-left: 8px;
+  margin-right: 4px;
+}
+
+.watched_repo .meta span.glyphicon:first-child {
+  margin-left: 0;
+}
+
+.repo_list li .glyphicon-hdd {
+  font-size: 32px;
+  color: #999;
+  margin-right: 20px;
+  float: left;
+  display: block;
+  height: 42px;
+}
+
+.repo_list h3 {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.1em;
+  margin: 0; 
+}
+
+.watched_repo .sort-info {
+  display: inline-block;
+  font-size: 11px;
+  color: #999999;
+}
+
+.more {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.more span {
+  font-size: 16px;
+  color: hsl(0, 0%, 60%);
+  font-style: italic;
+}
+
+#about p {
+  line-height: 2em;
+}
+
+.footer {
+  padding-top: 19px;
+  color: hsl(0, 0%, 47%);
+  border-top: 1px solid hsl(0, 0%, 90%);
+}

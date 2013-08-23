@@ -1,0 +1,29 @@
+<% if @repos.any? %>
+  <% @repos.each do |repository| %>
+    <li class="repo watched_repo">
+      <span class="glyphicon glyphicon-hdd"></span>
+      <span class="pull-right"><button type="button" data-user="<%= repository['owner']['login'] %>" data-repo="<%= repository['name'] %>" class="btn btn-default btn-sm <% if repos_starred? %>btn-unstarred<% else %>btn-unwatch<% end %>">
+          <% if repos_starred? %>
+            <span class="glyphicon glyphicon-star-empty"></span>&nbsp;Unstar</button>
+          <% else %>
+            <span class="glyphicon glyphicon-eye-close"></span>&nbsp;Unwatch</button>
+          <% end %>
+      </span>
+      <h3><a target="_blank" href="<%= repository['html_url'] %>"><%= repository['name'] %></a></h3>
+      <span class="sort-info">Watched&nbsp;<time><%= repository['pushed_at'] %></time></span>
+      <p class="description">
+        <% if repository['description'].nil? %>
+          <em>No description</em>
+        <% else %>
+          <%= repository['description'] %>&nbsp;<a target="_blank" href="<%= repository['homepage'] %>"><%= repository['homepage'] %></a>
+        <% end %>
+      </p>
+      <p class="meta">
+        <span class="glyphicon glyphicon-user"></span><%= repository['owner']['login'] %>
+        <span class="glyphicon glyphicon-eye-open"></span><%= repository['watchers_count'] %>
+        <span class="glyphicon glyphicon-random"></span><%= repository['forks_count'] %>
+        <span class="glyphicon glyphicon-tag"></span><%= repository['language'] %>
+      </p>
+    </li>
+  <% end %>
+<% end %>

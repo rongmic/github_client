@@ -1,0 +1,7 @@
+<div class="jumbotron">
+  <h1>Github Client</h1>
+  <p class="lead">It's an app based on Bootstrap and sinatra. It can help you manage your personal repositories on <a target="_blank" href="https://github.com">github</a>.</p>
+  <% unless login? %>
+    <p><a class="btn btn-lg btn-success" href="/auth/github">Authorize on github</a></p>
+  <% end %>
+</div>

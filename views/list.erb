@@ -1,0 +1,6 @@
+<ul class="repo_list">
+  <%= erb :repos %>
+</ul>
+<div class="more">
+  <button type="button" class="btn btn-primary btn-lg btn-block btn-more <% if repos_starred? %>btn-starred-more<% else %>btn-watched-more<% end %>">More Repositories</button>
+</div>

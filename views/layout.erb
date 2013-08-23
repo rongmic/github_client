@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Github Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+    <link href="favicon.ico" rel="icon" type="image/ico">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/html5shiv.js"></script>
+    <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li <% if nav_active?('/') %>class="active"<% end %>><a href="/">Home</a></li>
+          <li <% if nav_active?('/list') %>class="active"<% end %>>
+            <div class="dropdown pull-right">
+              <a id="dLabel" class="repos-type" role="button" data-toggle="dropdown" data-target="#" href="javascript:;">
+                Repos <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a href="/list?starred">Starred</a></li>
+                <li class="divider"></li>
+                <li><a href="/list?watched">Watched</a></li>
+              </ul>
+            </div>
+          </li>
+          <li <% if nav_active?('/about')%>class="active"<% end %>><a href="/about">About</a></li>
+          <li>
+            <% if login? %>
+              <div class="dropdown pull-right">
+                <a id="dLabel" class="account" role="button" data-toggle="dropdown" data-target="#" href="javascript:;">
+                  <img src="<%= @user['avatar_url'] %>" class="avatar" /> <%= @user['login'] %> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                  <li><a data-toggle="modal" href="#profile">Profile</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/logout">Logout</a></li>
+                </ul>
+              </div>
+            <% else%>
+              <a href="/auth/github">Login</a>
+            <% end %>
+          </li>
+        </ul>
+        <h3 class="text-muted">Github Client</h3>
+      </div>
+      <div id="main">
+        <% flash_types.select{ |type| flash.has?(type)}.each do |type| %>
+          <div id="msg" class="alert alert-<%= type %>"><%= flash[type] %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+      <% if login? %>
+        <!-- Modal -->
+        <div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title"><img src="<%= @user['avatar_url']%>" class="avatar" />&nbsp;<%= @user['login'] %></h3>
+              </div>
+              <div class="modal-body">
+                <% if @user['name'] %>
+                  <div class="fields">
+                    <label>Name: <%= @user['name'] %></label>
+                  </div>
+                <% end %>
+                <% if @user['blog'] %>
+                  <div class="fields">
+                    <label>Blog: <%= @user['blog'] %></label>
+                  </div>
+                <% end %>
+                <% if @user['location'] %>
+                  <div class="fields">
+                    <label>Location: <%= @user['location'] %></label>
+                  </div>
+                <% end %>
+                <% if @user['email'] %>
+                  <div class="fields">
+                    <label>Email: <%= @user['email'] %></label>
+                  </div>
+                <% end %>
+                <% if @user['public_repos'] %>
+                  <div class="fields">
+                    <label>Repos: <a href="<%= @user['html_url'] %>" target="_blank"><%= @user['public_repos'] %></a></label>
+                  </div>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+      <% end %>
+      <div class="footer">
+        <p>&copy; 2013 All Rights Reserved. <span class="pull-right">Hosted on <a href="">Github</a></span></p>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/repo.js"></script>
+  </body>
+</html>
